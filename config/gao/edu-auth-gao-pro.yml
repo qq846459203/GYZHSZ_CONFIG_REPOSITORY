@@ -1,0 +1,32 @@
+
+# 数据源
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+#    password: (%3zH&!&c/Lp;3x+TL
+#    url: jdbc:mysql://edu-mysql:3306/edu_xiao?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+#    password: vankia@123!
+#    url: jdbc:mysql://39.98.34.83:8880/edu_xiao?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    password: (%3zH&!&c/Lp;3x+TL
+    url: jdbc:mysql://mysql:3306/edu_gao?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+  redis:
+    #    password: '@191125!#'
+    database: 1
+    #    host: edu-redis
+    #    port: 6379
+    host: redis
+    port: 6379
+
+teewon:
+  getewayUrl: http://60.10.63.199:3307
+  appId: 808a2848882e41eb9eca8b6546b81456
+  appKey: 8b503d9a1d865c3c
+  tenantId: E000056
+# spring security 配置
+security:
+  oauth2:
+    resource:
+      loadBalanced: true
+      token-info-uri: http://edu-auth-gao/oauth/check_token

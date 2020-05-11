@@ -1,0 +1,69 @@
+spring:
+  redis:
+    #    password: '@191125!#'
+    database: 2
+    #    host: edu-redis
+    #    port: 6379
+    host: 39.98.217.189
+    port: 6380
+  cloud:
+    gateway:
+      locator:
+        enabled: true
+      routes:
+        # 认证中心
+        - id: edu-auth-chu
+          uri: lb://edu-auth-chu
+          predicates:
+            - Path=/auth/**
+          filters:
+            # 验证码处理
+            - ValidateCodeGatewayFilter
+            # 前端密码解密
+            - PasswordDecoderFilter
+        #UPMS 模块
+        - id: edu-system
+          uri: lb://edu-system
+          predicates:
+            - Path=/admin/**
+          filters:
+            # 限流配置
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@remoteAddrKeyResolver}'
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+              # 降级配置
+            - name: Hystrix
+              args:
+                name: default
+                fallbackUri: 'forward:/fallback'
+        # 代码生成模块
+        - id: edu-codegen
+          uri: lb://edu-codegen
+          predicates:
+            - Path=/gen/**
+      # bus中心
+        - id: edu-bus-chu
+          uri: lb://edu-bus-chu
+          predicates:
+          - Path=/bus/**
+        # bus中心
+        - id: edu-mobile-chu
+          uri: lb://edu-mobile-chu
+          predicates:
+            - Path=/mobile/**
+
+security:
+  encode:
+    # 前端密码密钥，必须16位
+    key: 'eduedu,edu1cloud'
+  oauth2:
+    resource:
+      loadBalanced: true
+      token-info-uri: http://edu-auth-chu/oauth/check_token
+# 不校验验证码终端
+ignore:
+  clients:
+    - test
+    - systest/page

@@ -1,0 +1,26 @@
+## spring security 配置
+security:
+  oauth2:
+    client:
+      #client-id: ENC(27v1agvAug87ANOVnbKdsw==)
+      #client-secret: ENC(VbnkopxrwgbFVKp+UxJ2pg==)
+      client-id: ENC(8KOdpuX/cdW7Ja27Gsb+l5Hr5/Vo0lgX)
+      client-secret: ENC(8KOdpuX/cdW7Ja27Gsb+l5Hr5/Vo0lgX)
+      scope: server
+
+# 数据源配置
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://edu-mysql:3307/edu_xiao?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+  resources:
+    static-locations: classpath:/static/,classpath:/views/
+
+# 直接放行URL
+ignore:
+  urls:
+    - /actuator/**
+

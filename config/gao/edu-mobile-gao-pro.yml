@@ -1,0 +1,39 @@
+security:
+  oauth2:
+    client:
+     #client-id: ENC(imENTO7M8bLO38LFSIxnzw==)
+    #      #client-secret: ENC(i3cDFhs26sa2Ucrfz2hnQw==)
+      client-id: ENC(eqe+gtoeoQ8VozaRFcsTc8aWTY7YBvnE)
+      client-secret: ENC(sST1fpRho0GArsbNz6DHEoqkAVf5V53T)
+      scope: server
+    resource:
+      loadBalanced: true
+      token-info-uri: http://edu-auth-gao/oauth/check_token
+# 数据源
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+#    password: vankia@123!
+#    url: jdbc:mysql://39.98.34.83:8880/edu_xiao?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+#    password: (%3zH&!&c/Lp;3x+TL
+#    url: jdbc:mysql://edu-mysql:3306/edu_xiao?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    password: (%3zH&!&c/Lp;3x+TL
+    url: jdbc:mysql://mysql:3306/edu_gao?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+  redis:
+    #    password: '@191125!#'
+    database: 1
+    #    host: edu-redis
+    #    port: 6379
+    host: redis
+    port: 6379
+# 直接放行URL(但必须经过网关)
+ignore:
+  urls:
+    - /actuator/**
+    - /user/info/*
+    - /parentRegister/**
+logging:
+  level:
+    com.cloud.edu.mobile.mapper: debug

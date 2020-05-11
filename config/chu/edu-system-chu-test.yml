@@ -1,0 +1,49 @@
+security:
+  oauth2:
+    client:
+     #client-id: ENC(imENTO7M8bLO38LFSIxnzw==)
+    #      #client-secret: ENC(i3cDFhs26sa2Ucrfz2hnQw==)
+      client-id: ENC(VqlhPoD/anoFo/U7h3Zk1esVFPFmNHMn)
+      client-secret: ENC(VqlhPoD/anoFo/U7h3Zk1esVFPFmNHMn)
+      scope: server
+    resource:
+      loadBalanced: true
+      token-info-uri: http://edu-auth-chu/oauth/check_token
+# 数据源
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+#    password: (%3zH&!&c/Lp;3x+TL
+#    url: jdbc:mysql://edu-mysql:3306/edu_xiao?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+#    password: vankia@123!
+#    url: jdbc:mysql://39.98.34.83:8880/edu_chu?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    password: 123456
+    url: jdbc:mysql://39.98.217.189:3307/edu_chu?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+  redis:
+    #    password: '@191125!#'
+    database: 2
+    #    host: edu-redis
+    #    port: 6379
+    host: 39.98.217.189
+    port: 6380
+# 直接放行URL(但必须经过网关)
+ignore:
+  urls:
+    - /actuator/**
+    - /user/info/*
+    - /log/**
+    - /user/details/**
+    - /user/saveUser
+
+teewon:
+  getewayUrl: http://dev.teewon.net:7000
+  appId: b1b913d321e144269533e9a0d5fb5c45
+  appKey: 5d3b22e745c4e3e9
+  tenantId: HBLFEDU,HBasdf
+open:
+  chain:
+    saveUrl: http://47.75.189.95:5020/bus/chain/save
+    appId: pig
+    appsecret: pig
