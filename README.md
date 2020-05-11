@@ -1,0 +1,2 @@
+# GYZHSZ_CONFIG_REPOSITORY
+广阳综合素质config配置中心配置文件库
