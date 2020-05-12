@@ -59,4 +59,4 @@ open:
 logging:
   level:
     com.cloud.edu.bus.mapper: debug
-test: test11122
+test: test1112233
